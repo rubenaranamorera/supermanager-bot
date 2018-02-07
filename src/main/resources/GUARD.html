@@ -1,0 +1,830 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>Supermanager</title>
+    <link href="/t2vfw/css/reset.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="/t2vfw/css/recursos.css" />
+    <link rel="stylesheet" type="text/css" href="/t2vfw/css/web.css" />
+    <script type="text/javascript" src="/t2vfw/js/jquery/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="/t2vfw/js/jquery/jquery-ui-1.9.2.custom.min.js"></script>
+    <script type="text/javascript" src="/t2vfw/js/jquery/jquery.flydom-3.1.1.js"></script>
+    <script type="text/javascript" src="/t2vfw/js/jquery/jquery.t2v.js"></script>
+    <script type="text/javascript" src="/t2vfw/js/notificaciones.js"></script>
+    <script type="text/javascript" src="/t2vfw/js/jquery/jquery.actual.min.js"></script>
+    <!--[if lt IE 9]>
+    <script src="/t2vfw/js/html5.js"></script>
+    <![endif]-->
+
+    <link href="/css/web/acb/fancy.css" rel="stylesheet" />
+    <link href="/css/web/jquery-ui-1.10.3.custom.css" rel="stylesheet" />
+    <link rel="Shortcut Icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link href="/t2vfw/css/tipografias.css" rel="stylesheet" type="text/css" />
+    <link href="/css/web/jquery.mCustomScrollbar.css" rel="stylesheet" />
+    <script src="/js/web/jquery.actual.js"></script>
+    <script src="/js/web/libreria.js"></script>
+    <script src="/js/web/jquery.mousewheel.min.js"></script>
+    <script src="/js/web/jquery.mCustomScrollbar.js"></script>
+    <!--[if gte IE 9]>
+    <style type="text/css">
+        .gradient {
+            filter: none;
+        }
+    </style>
+    <![endif]-->
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-23603666-10']);
+        _gaq.push(['_setDomainName', 'supermanager.acb.com']);
+        _gaq.push(['_setAllowLinker', true]);
+        _gaq.push(['_setAllowHash', false]);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</head>
+<body>
+<div id="contienefichajes">
+    <header class="cabfichar">
+        <figure><img src="/images/web/ico-mercado.png" alt="" title=""></figure>
+        <div class="titulo">Fichar Base</div>
+    </header>
+    <section class="cajafichajes">
+        <header class="topinterior">
+            <div class="nombreequipo"></div>
+            <div class="mispuntos"><span class="colorweb_1">Disponible:</span> 6.500.000</div>
+        </header>
+        <div class="topcolumnasequipos">
+            <div class="jugequipo">Jugador / Equipo</div>
+            <div class="promedio">Promedio</div>
+            <div class="cotizacion">Precio</div>
+            <div class="botones"></div>
+        </div>
+
+        <div id="listajugadores">
+            <table class="misjugadores">
+                <tbody>
+                <tr class="impar ">
+                    <td class="iconos">
+
+
+                        <img src="/images/web/mercado/ico-espanol.png" alt="Icono de español" title="Español">
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/luka-doncic" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/J460LACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/luka-doncic" target="_blank" class="colorweb_4">Doncic, Luka</a></span><br/>Real Madrid</td>
+                    <td class="promedio">23,91</td>
+                    <td class="cotizacion">1.673.875</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2736" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="par ">
+                    <td class="iconos">
+
+
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/thomas-heurtel" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/JBJPLACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/thomas-heurtel" target="_blank" class="colorweb_4">Heurtel, Thomas</a></span><br/>FC Barcelona Lassa</td>
+                    <td class="promedio">17,49</td>
+                    <td class="cotizacion">1.224.125</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2851" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="impar ">
+                    <td class="iconos">
+
+
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/clevin-hannah" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/J1LQLACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/clevin-hannah" target="_blank" class="colorweb_4">Hannah, Clevin</a></span><br/>UCAM Murcia CB</td>
+                    <td class="promedio">16,74</td>
+                    <td class="cotizacion">1.172.111</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2758" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="par ">
+                    <td class="iconos">
+
+
+                        <img src="/images/web/mercado/ico-espanol.png" alt="Icono de español" title="Español">
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/jaime-fernandez" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/J117LACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/jaime-fernandez" target="_blank" class="colorweb_4">Fernández, Jaime</a></span><br/>MoraBanc Andorra</td>
+                    <td class="promedio">15,60</td>
+                    <td class="cotizacion">1.092.000</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2618" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="impar ">
+                    <td class="iconos">
+
+
+                        <img src="/images/web/mercado/ico-espanol.png" alt="Icono de español" title="Español">
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/jayson-granger" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/JY6KLACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/jayson-granger" target="_blank" class="colorweb_4">Granger, Jayson</a></span><br/>Baskonia</td>
+                    <td class="promedio">14,92</td>
+                    <td class="cotizacion">1.044.235</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2656" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="par ">
+                    <td class="iconos">
+
+
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/facundo-campazzo" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/J1LULACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/facundo-campazzo" target="_blank" class="colorweb_4">Campazzo, Facundo</a></span><br/>Real Madrid</td>
+                    <td class="promedio">13,82</td>
+                    <td class="cotizacion">967.647</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2734" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="impar ">
+                    <td class="iconos">
+
+
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/omar-cook" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/JBFPLACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/omar-cook" target="_blank" class="colorweb_4">Cook, Omar</a></span><br/>Movistar Estudiantes</td>
+                    <td class="promedio">12,68</td>
+                    <td class="cotizacion">887.765</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2846" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="par ">
+                    <td class="iconos">
+                        <img src="/images/web/mercado/ico-masinfo.png" alt="Icono de más información" title="Baja debido a una microrrotura en el bíceps femoral izquierdo">
+
+                        <img src="/images/web/mercado/ico-lesionado.png" alt="Icono de lesionado" title="Lesionado">
+
+                        <img src="/images/web/mercado/ico-espanol.png" alt="Icono de español" title="Español">
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/sergi-garcia" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/J276LACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/sergi-garcia" target="_blank" class="colorweb_4">García, Sergi</a></span><br/>Valencia Basket Club</td>
+                    <td class="promedio">12,64</td>
+                    <td class="cotizacion">884.800</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2818" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="impar ">
+                    <td class="iconos">
+                        <img src="/images/web/mercado/ico-masinfo.png" alt="Icono de más información" title="Duda por molestias físicas">
+
+                        <img src="/images/web/mercado/ico-lesionado.png" alt="Icono de lesionado" title="Lesionado">
+
+                        <img src="/images/web/mercado/ico-espanol.png" alt="Icono de español" title="Español">
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/albert-oliver" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/JA56LACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/albert-oliver" target="_blank" class="colorweb_4">Oliver, Albert</a></span><br/>Herbalife Gran Canaria</td>
+                    <td class="promedio">11,89</td>
+                    <td class="cotizacion">832.000</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2682" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="par ">
+                    <td class="iconos">
+                        <img src="/images/web/mercado/ico-masinfo.png" alt="Icono de más información" title="Sufre una fractura no desplazada de tres vértebras lumbares">
+
+                        <img src="/images/web/mercado/ico-lesionado.png" alt="Icono de lesionado" title="Lesionado">
+
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/sam-van-rossom" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/JBK4LACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/sam-van-rossom" target="_blank" class="colorweb_4">Van Rossom, Sam</a></span><br/>Valencia Basket Club</td>
+                    <td class="promedio">11,65</td>
+                    <td class="cotizacion">815.500</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2875" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="impar ">
+                    <td class="iconos">
+
+
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/marcelinho-huertas" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/JB72LACB59.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/marcelinho-huertas" target="_blank" class="colorweb_4">Huertas, Marcelinho</a></span><br/>Baskonia</td>
+                    <td class="promedio">10,81</td>
+                    <td class="cotizacion">756.824</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2655" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="par ">
+                    <td class="iconos">
+
+
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/jonathan-tabu" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/JH09LACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/jonathan-tabu" target="_blank" class="colorweb_4">Tabu, Jonathan</a></span><br/>RETAbet Bilbao Basket</td>
+                    <td class="promedio">10,61</td>
+                    <td class="cotizacion">742.933</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2668" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="impar ">
+                    <td class="iconos">
+
+
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/corey-fisher" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/J244LACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/corey-fisher" target="_blank" class="colorweb_4">Fisher, Corey</a></span><br/>San Pablo Burgos</td>
+                    <td class="promedio">10,00</td>
+                    <td class="cotizacion">700.000</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2842" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="par ">
+                    <td class="iconos">
+
+
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/bo-mccalebb" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/J519LACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/bo-mccalebb" target="_blank" class="colorweb_4">McCalebb, Bo</a></span><br/>Tecnyconta Zaragoza</td>
+                    <td class="promedio">13,60</td>
+                    <td class="cotizacion">693.773</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2904" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="impar ">
+                    <td class="iconos">
+
+
+                        <img src="/images/web/mercado/ico-espanol.png" alt="Icono de español" title="Español">
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/pepe-pozas" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/J750LACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/pepe-pozas" target="_blank" class="colorweb_4">Pozas, Pepe</a></span><br/>Monbus Obradoiro</td>
+                    <td class="promedio">9,30</td>
+                    <td class="cotizacion">651.000</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2779" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="par ">
+                    <td class="iconos">
+
+
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/nico-laprovittola" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/JD06LACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/nico-laprovittola" target="_blank" class="colorweb_4">Laprovittola, Nico</a></span><br/>Divina Seguros Joventut</td>
+                    <td class="promedio">15,00</td>
+                    <td class="cotizacion">649.750</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2914" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="impar ">
+                    <td class="iconos">
+
+
+                        <img src="/images/web/mercado/ico-extracomunitario.png" alt="Icono de extracomunitario" title="Extracomunitario">
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/kenny-chery" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/J51ALACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/kenny-chery" target="_blank" class="colorweb_4">Chery, Kenny</a></span><br/>Delteco GBC</td>
+                    <td class="promedio">9,57</td>
+                    <td class="cotizacion">621.707</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2829" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="par ">
+                    <td class="iconos">
+
+
+                        <img src="/images/web/mercado/ico-espanol.png" alt="Icono de español" title="Español">
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/tomas-bellas" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/JYEFLACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/tomas-bellas" target="_blank" class="colorweb_4">Bellas, Tomás</a></span><br/>Tecnyconta Zaragoza</td>
+                    <td class="promedio">8,82</td>
+                    <td class="cotizacion">617.556</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2848" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="impar ">
+                    <td class="iconos">
+
+
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/gal-mekel" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/J53KLACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/gal-mekel" target="_blank" class="colorweb_4">Mekel, Gal</a></span><br/>Herbalife Gran Canaria</td>
+                    <td class="promedio">8,54</td>
+                    <td class="cotizacion">598.111</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2844" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="par ">
+                    <td class="iconos">
+
+
+                        <img src="/images/web/mercado/ico-espanol.png" alt="Icono de español" title="Español">
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/daniel-perez" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/JY84LACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/daniel-perez" target="_blank" class="colorweb_4">Pérez, Daniel</a></span><br/>Delteco GBC</td>
+                    <td class="promedio">8,44</td>
+                    <td class="cotizacion">590.625</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2830" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="impar ">
+                    <td class="iconos">
+
+
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/andrew-albicy" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/J502LACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/andrew-albicy" target="_blank" class="colorweb_4">Albicy, Andrew</a></span><br/>MoraBanc Andorra</td>
+                    <td class="promedio">8,35</td>
+                    <td class="cotizacion">584.706</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2622" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="par ">
+                    <td class="iconos">
+                        <img src="/images/web/mercado/ico-masinfo.png" alt="Icono de más información" title="Duda con una sobrecarga en el isquio derecho">
+
+
+                        <img src="/images/web/mercado/ico-espanol.png" alt="Icono de español" title="Español">
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/rodrigo-san-miguel" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/JB86LACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/rodrigo-san-miguel" target="_blank" class="colorweb_4">San Miguel, Rodrigo</a></span><br/>Iberostar Tenerife</td>
+                    <td class="promedio">8,06</td>
+                    <td class="cotizacion">563.889</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2670" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="impar ">
+                    <td class="iconos">
+
+
+                        <img src="/images/web/mercado/ico-extracomunitario.png" alt="Icono de extracomunitario" title="Extracomunitario">
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/ray-mccallum" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/J540LACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/ray-mccallum" target="_blank" class="colorweb_4">McCallum, Ray</a></span><br/>Unicaja</td>
+                    <td class="promedio">8,04</td>
+                    <td class="cotizacion">562.471</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2799" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="par ">
+                    <td class="iconos">
+
+
+                        <img src="/images/web/mercado/ico-extracomunitario.png" alt="Icono de extracomunitario" title="Extracomunitario">
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/maalik-wayns" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/J56BLACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/maalik-wayns" target="_blank" class="colorweb_4">Wayns, Maalik</a></span><br/>Divina Seguros Joventut</td>
+                    <td class="promedio">7,45</td>
+                    <td class="cotizacion">521.500</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2888" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="impar ">
+                    <td class="iconos">
+
+
+                        <img src="/images/web/mercado/ico-espanol.png" alt="Icono de español" title="Español">
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/alberto-diaz" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/JSHGLACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/alberto-diaz" target="_blank" class="colorweb_4">Díaz, Alberto</a></span><br/>Unicaja</td>
+                    <td class="promedio">7,14</td>
+                    <td class="cotizacion">499.882</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2805" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="par ">
+                    <td class="iconos">
+
+
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/nikola-radicevic" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/J263LACB61.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/nikola-radicevic" target="_blank" class="colorweb_4">Radicevic, Nikola</a></span><br/>Herbalife Gran Canaria</td>
+                    <td class="promedio">7,20</td>
+                    <td class="cotizacion">488.750</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2915" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="impar ">
+                    <td class="iconos">
+
+
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/charlon-kloof" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/J53NLACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/charlon-kloof" target="_blank" class="colorweb_4">Kloof, Charlon</a></span><br/>UCAM Murcia CB</td>
+                    <td class="promedio">6,98</td>
+                    <td class="cotizacion">488.444</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2762" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="par ">
+                    <td class="iconos">
+
+
+                        <img src="/images/web/mercado/ico-espanol.png" alt="Icono de español" title="Español">
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/ludde-hakanson" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/JUAELACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/ludde-hakanson" target="_blank" class="colorweb_4">Hakanson, Ludde</a></span><br/>Movistar Estudiantes</td>
+                    <td class="promedio">6,84</td>
+                    <td class="cotizacion">478.471</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2705" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="impar ">
+                    <td class="iconos">
+
+
+                        <img src="/images/web/mercado/ico-espanol.png" alt="Icono de español" title="Español">
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/josep-franch" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/JY79LACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/josep-franch" target="_blank" class="colorweb_4">Franch, Josep</a></span><br/>Real Betis Energía Plus</td>
+                    <td class="promedio">6,63</td>
+                    <td class="cotizacion">463.867</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2864" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="par ">
+                    <td class="iconos">
+
+
+                        <img src="/images/web/mercado/ico-espanol.png" alt="Icono de español" title="Español">
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/ferran-bassas" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/J714LACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/ferran-bassas" target="_blank" class="colorweb_4">Bassas, Ferran</a></span><br/>Iberostar Tenerife</td>
+                    <td class="promedio">6,57</td>
+                    <td class="cotizacion">460.133</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2861" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="impar ">
+                    <td class="iconos">
+                        <img src="/images/web/mercado/ico-masinfo.png" alt="Icono de más información" title="Pasará por el quirófano debido a una bursitis en el tobillo izquierdo">
+
+                        <img src="/images/web/mercado/ico-lesionado.png" alt="Icono de lesionado" title="Lesionado">
+
+                        <img src="/images/web/mercado/ico-espanol.png" alt="Icono de español" title="Español">
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/guillem-vives" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/JBLPLACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/guillem-vives" target="_blank" class="colorweb_4">Vives, Guillem</a></span><br/>Valencia Basket Club</td>
+                    <td class="promedio">6,23</td>
+                    <td class="cotizacion">436.333</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2785" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="par ">
+                    <td class="iconos">
+
+
+                        <img src="/images/web/mercado/ico-extracomunitario.png" alt="Icono de extracomunitario" title="Extracomunitario">
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/phil-pressey" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/J53XLACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/phil-pressey" target="_blank" class="colorweb_4">Pressey, Phil</a></span><br/>FC Barcelona Lassa</td>
+                    <td class="promedio">6,18</td>
+                    <td class="cotizacion">432.250</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2635" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="impar ">
+                    <td class="iconos">
+
+
+                        <img src="/images/web/mercado/ico-espanol.png" alt="Icono de español" title="Español">
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/mikel-uriz" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/J742LACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/mikel-uriz" target="_blank" class="colorweb_4">Uriz, Mikel</a></span><br/>Real Betis Energía Plus</td>
+                    <td class="promedio">5,77</td>
+                    <td class="cotizacion">404.133</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2809" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="par ">
+                    <td class="iconos">
+
+
+                        <img src="/images/web/mercado/ico-espanol.png" alt="Icono de español" title="Español">
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/javier-salgado" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/JB1RLACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/javier-salgado" target="_blank" class="colorweb_4">Salgado, Javier</a></span><br/>RETAbet Bilbao Basket</td>
+                    <td class="promedio">5,75</td>
+                    <td class="cotizacion">402.500</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2666" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="impar ">
+                    <td class="iconos">
+
+
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/ricardo-fischer" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/J53GLACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/ricardo-fischer" target="_blank" class="colorweb_4">Fischer, Ricardo</a></span><br/>RETAbet Bilbao Basket</td>
+                    <td class="promedio">5,71</td>
+                    <td class="cotizacion">399.467</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2663" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="par ">
+                    <td class="iconos">
+                        <img src="/images/web/mercado/ico-masinfo.png" alt="Icono de más información" title="Estará de baja hasta finales de marzo por una fractura en la rótula de su rodilla derecha">
+
+                        <img src="/images/web/mercado/ico-lesionado.png" alt="Icono de lesionado" title="Lesionado">
+
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/josh-akognon" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/J52JLACB61.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/josh-akognon" target="_blank" class="colorweb_4">Akognon, Josh</a></span><br/>Iberostar Tenerife</td>
+                    <td class="promedio">-3,00</td>
+                    <td class="cotizacion">395.250</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2911" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="impar ">
+                    <td class="iconos">
+
+
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/dontaye-draper" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/J243LACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/dontaye-draper" target="_blank" class="colorweb_4">Draper, Dontaye</a></span><br/>Real Betis Energía Plus</td>
+                    <td class="promedio">6,03</td>
+                    <td class="cotizacion">392.518</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2893" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="par ">
+                    <td class="iconos">
+
+
+                        <img src="/images/web/mercado/ico-espanol.png" alt="Icono de español" title="Español">
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/albert-sabat" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/JB2JLACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/albert-sabat" target="_blank" class="colorweb_4">Sàbat, Albert</a></span><br/>Monbus Obradoiro</td>
+                    <td class="promedio">5,04</td>
+                    <td class="cotizacion">352.471</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2769" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="impar ">
+                    <td class="iconos">
+
+
+                        <img src="/images/web/mercado/ico-extracomunitario.png" alt="Icono de extracomunitario" title="Extracomunitario">
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/gregory-vargas" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/J53QLACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/gregory-vargas" target="_blank" class="colorweb_4">Vargas, Gregory</a></span><br/>Montakit Fuenlabrada</td>
+                    <td class="promedio">4,81</td>
+                    <td class="cotizacion">336.778</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2710" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="par ">
+                    <td class="iconos">
+
+
+                        <img src="/images/web/mercado/ico-espanol.png" alt="Icono de español" title="Español">
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/nenad-dimitrijevic" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/J2CPLACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/nenad-dimitrijevic" target="_blank" class="colorweb_4">Dimitrijevic, Nenad</a></span><br/>Divina Seguros Joventut</td>
+                    <td class="promedio">5,11</td>
+                    <td class="cotizacion">326.176</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2719" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="impar ">
+                    <td class="iconos">
+
+
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/luka-rupnik" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/J52NLACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/luka-rupnik" target="_blank" class="colorweb_4">Rupnik, Luka</a></span><br/>Montakit Fuenlabrada</td>
+                    <td class="promedio">3,98</td>
+                    <td class="cotizacion">278.444</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2709" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="par ">
+                    <td class="iconos">
+
+
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/thomas-schreiner" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/J2A3LACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/thomas-schreiner" target="_blank" class="colorweb_4">Schreiner, Thomas</a></span><br/>San Pablo Burgos</td>
+                    <td class="promedio">3,86</td>
+                    <td class="cotizacion">269.889</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2747" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="impar ">
+                    <td class="iconos">
+
+
+                        <img src="/images/web/mercado/ico-espanol.png" alt="Icono de español" title="Español">
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/carlos-alocen" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/JI3DLACB61.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/carlos-alocen" target="_blank" class="colorweb_4">Alocén, Carlos</a></span><br/>Tecnyconta Zaragoza</td>
+                    <td class="promedio">7,50</td>
+                    <td class="cotizacion">201.023</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2902" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="par ">
+                    <td class="iconos">
+
+
+                        <img src="/images/web/mercado/ico-extracomunitario.png" alt="Icono de extracomunitario" title="Extracomunitario">
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/chasson-randle" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/J566LACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/chasson-randle" target="_blank" class="colorweb_4">Randle, Chasson</a></span><br/>Real Madrid</td>
+                    <td class="promedio">2,25</td>
+                    <td class="cotizacion">157.231</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2885" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="impar ">
+                    <td class="iconos">
+
+
+                        <img src="/images/web/mercado/ico-espanol.png" alt="Icono de español" title="Español">
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/pol-molins" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/JFRILACB61.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/pol-molins" target="_blank" class="colorweb_4">Molins, Pol</a></span><br/>Divina Seguros Joventut</td>
+                    <td class="promedio">0,00</td>
+                    <td class="cotizacion">127.011</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2907" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="par ">
+                    <td class="iconos">
+
+
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/donnie-mcgrath" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/JFPOLACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/donnie-mcgrath" target="_blank" class="colorweb_4">McGrath, Donnie</a></span><br/>Real Betis Energía Plus</td>
+                    <td class="promedio">1,55</td>
+                    <td class="cotizacion">115.033</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2814" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="impar ">
+                    <td class="iconos">
+
+
+                        <img src="/images/web/mercado/ico-espanol.png" alt="Icono de español" title="Español">
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/morayo-soluade" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/JXGTLACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/morayo-soluade" target="_blank" class="colorweb_4">Soluade, Mo</a></span><br/>Unicaja</td>
+                    <td class="promedio">0,53</td>
+                    <td class="cotizacion">104.240</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2806" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="par ">
+                    <td class="iconos">
+
+
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/luca-vildoza" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/J53OLACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/luca-vildoza" target="_blank" class="colorweb_4">Vildoza, Luca</a></span><br/>Baskonia</td>
+                    <td class="promedio">1,22</td>
+                    <td class="cotizacion">98.225</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2651" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="impar ">
+                    <td class="iconos">
+
+
+                        <img src="/images/web/mercado/ico-espanol.png" alt="Icono de español" title="Español">
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/alberto-martin" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/J858LACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/alberto-martin" target="_blank" class="colorweb_4">Martín, Alberto</a></span><br/>UCAM Murcia CB</td>
+                    <td class="promedio">0,83</td>
+                    <td class="cotizacion">58.667</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2764" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+                <tr class="par ">
+                    <td class="iconos">
+
+
+                        <img src="/images/web/mercado/ico-espanol.png" alt="Icono de español" title="Español">
+
+                    </td>
+                    <td class="fotos"><a href="http://kiaenzona.com/jugador-liga-endesa/sergio-llorente" target="_blank"><img src="http://www.acb.com/fotos_cara/jugadores/J721LACB62.jpg" width="33px" alt="jugador" title="jugador"></a></td>
+                    <td class="jugequipo"><span class="negrita"><a href="http://kiaenzona.com/jugador-liga-endesa/sergio-llorente" target="_blank" class="colorweb_4">Llorente, Sergio</a></span><br/>Montakit Fuenlabrada</td>
+                    <td class="promedio">-0,38</td>
+                    <td class="cotizacion">57.179</td>
+                    <td class="botones">
+                        <nav><a href="/equipos/comprar/equipo_id/1091354/posicion_id/1/puesto/1/jugador_id/2870" class="gradient-azul gradient">Fichar</a></nav>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+</div>
+</section>
+
+<script>
+    //  $(window).load(function(){
+    //    $("#listajugadores").mCustomScrollbar({
+    //      mouseWheel:true
+    //    });
+    //  });
+</script>
+
+</body>
+</html>
