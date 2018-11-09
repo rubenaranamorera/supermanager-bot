@@ -15,8 +15,8 @@ public class SupermanagerUIService {
   private static final int FORWARDS_NUMBER = 4;
   private static final int CENTERS_NUMBER = 4;
 
-  public static final String USER = "my_supermanager_user";
-  public static final String PASSWORD = "my_supermanager_password";
+  public static final String USER = "armoz";
+  public static final String PASSWORD = "starcraf";
 
   private TeamNameGenerator teamNameGenerator;
 

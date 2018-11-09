@@ -45,11 +45,11 @@ public class SupermanagerTeam {
     return money;
   }
 
-  public static Builder createTeam() {
+  public static Builder supermanagerTeam() {
     return new Builder();
   }
 
-  public static Builder createTeam(SupermanagerTeam copy) {
+  public static Builder supermanagerTeam(SupermanagerTeam copy) {
     Builder builder = new Builder();
     builder.id = copy.id;
     builder.name = copy.name;
@@ -75,8 +75,9 @@ public class SupermanagerTeam {
 
   public boolean isValid() {
     long difference = money - getTotalPrice();
-    return /*difference > 0 && difference < 6000000
-        && */guards.size() == 3
+    return difference > 0
+        //&& difference < 500000
+        && guards.size() == 3
         && forwards.size() == 4
         && centers.size() == 4
         && getPlayersFrom(PlayerNationalityEnum.SPANISH) >= 4

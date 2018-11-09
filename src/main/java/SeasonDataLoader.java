@@ -11,10 +11,10 @@ import java.util.List;
 
 public class SeasonDataLoader {
 
-  public static final String SEASON = "62";
+  public static final String SEASON = "63";
   public static final String GAME_STATS_END_URL = ".php";
   public static final String GAME_STATS_URL = "http://www.acb.com/fichas/LACB" + SEASON;
-  public static final int GAMES_NUMBER = 185; //jornada 20 160, total 290
+  public static final int GAMES_NUMBER = 90; //jornada 20 160, total 290
 
   private InMemoryDB inMemoryDB;
 

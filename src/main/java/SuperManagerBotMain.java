@@ -43,7 +43,7 @@ public class SuperManagerBotMain {
     System.out.println("PlayerListsInitialized" +  (System.currentTimeMillis() - pretime));
 
     //teamCreator.createTeams();
-    teamCreator.updateTeams();
+    teamCreator.updateTeams(false);
   }
 
 }

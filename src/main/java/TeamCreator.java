@@ -13,35 +13,51 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.toMap;
+import static model.SupermanagerTeam.supermanagerTeam;
 
 public class TeamCreator {
 
-  private static final int MIN_EFFICIENCY = 12;
-  private static final int BEST_GUARDS_NUMBER = 7;
-  private static final int BEST_FORWARDS_NUMBER = 8;
-  private static final int BEST_CENTERS_NUMBER = 8;
+  private static final int MIN_EFFICIENCY = 10;
+
+  private static final int BEST_GUARDS_NUMBER = 8;
+
+  private static final int BEST_FORWARDS_NUMBER = 10;
+
+  private static final int BEST_CENTERS_NUMBER = 7;
+
   private static final int EXTRA_PLAYERS_MARGIN = 0;
+
   private static final int ALWAYS_IN_EFF_THRESHOLD = 15;
 
   private final TeamNameGenerator teamNameGenerator;
+
   private final SupermanagerUIService supermanagerUIService;
+
   private final PlayerEffComparator playerEffComparator;
 
   private static final int ITERATIONS_PER_TEAM = 1000;
 
   private List<Player> bestGuards = new ArrayList<>();
+
   private List<Player> bestForwards = new ArrayList<>();
+
   private List<Player> bestCenters = new ArrayList<>();
 
-  private int TEAMS_TO_BE_CREATED = 800;
+  private int TEAMS_TO_BE_CREATED = 1000;
+
   private int CHANGES_TO_BE_DONE = 3;
 
   private List<Long> teamIds = new ArrayList<>();
 
 
-  public TeamCreator(TeamNameGenerator teamNameGenerator, SupermanagerUIService supermanagerUIService, PlayerEffComparator playerEffComparator) {
+  public TeamCreator(
+      TeamNameGenerator teamNameGenerator, SupermanagerUIService supermanagerUIService,
+      PlayerEffComparator playerEffComparator
+  ) {
     this.teamNameGenerator = teamNameGenerator;
     this.supermanagerUIService = supermanagerUIService;
     this.playerEffComparator = playerEffComparator;
@@ -52,31 +68,29 @@ public class TeamCreator {
 
   private List<Player> playerList = new ArrayList<>();
 
+  public static final float SOME = 1.2f;
 
-  public static final float OFTEN = 1.1f;
-  public static final float SOME = 0.8f;
-  public static final float FEW = 0.6f;
+  public static final float LESS = 0.85f;
+
+  public static final float FEW = 0.7f;
+
   public static final float NEVER = 0f;
 
 
   static {
 
-    PLAYERS_TO_BUY.put("SAN EMETERIO, FERNANDO", SOME);
-    PLAYERS_TO_BUY.put("VIDAL, SERGI", SOME);
+    PLAYERS_TO_BUY.put("ENNIS, DYLAN", SOME);
+    PLAYERS_TO_BUY.put("BEIRAN, JAVIER", SOME);
+    PLAYERS_TO_BUY.put("BRIZUELA, DARIO", SOME);
+
+    PLAYERS_TO_BUY.put("TAVARES, EDY", LESS);
+    PLAYERS_TO_BUY.put("ORIOLA, PIERRE", LESS);
+    PLAYERS_TO_BUY.put("POIRIER, VINCENT", LESS);
+    PLAYERS_TO_BUY.put("SALVO, MIQUEL", LESS);
 
 
-    /*PLAYERS_TO_BUY.put("CAMPAZZO, FACUNDO", 1.6f);
-    PLAYERS_TO_BUY.put("GRANGER, JAYSON", OFTEN);
-    PLAYERS_TO_BUY.put("SOKO, OVIE", OFTEN);
-    PLAYERS_TO_BUY.put("TAVARES, WALTER", OFTEN);
-    PLAYERS_TO_BUY.put("LANDESBERG, SYLVEN", OFTEN);
-    PLAYERS_TO_BUY.put("SCHILB, BLAKE", OFTEN);
-
-
-    PLAYERS_TO_BUY.put("NEAL, GARY", SOME);
-    PLAYERS_TO_BUY.put("NOREL, HENK", SOME);
-    PLAYERS_TO_BUY.put("VAN LACKE, FEDE", SOME);*/
-
+    PLAYERS_TO_BUY.put("CARROLL, JAYCEE", FEW);
+    PLAYERS_TO_BUY.put("HUERTAS, MARCELINHO", FEW);
   }
 
   public void initializePlayersLists(List<Player> playerPredictions) {
@@ -133,8 +147,7 @@ public class TeamCreator {
 
     for (Player player : playerList) {
 
-      if (player.getPredictedEff() > ALWAYS_IN_EFF_THRESHOLD)
-
+      if (player.getPredictedEff() > ALWAYS_IN_EFF_THRESHOLD) {
         if (player.getPosition() == PositionEnum.GUARD) {
           if (!bestGuards.contains(player)) {
             bestGuards.add(player);
@@ -148,6 +161,7 @@ public class TeamCreator {
             bestCenters.add(player);
           }
         }
+      }
     }
 
 
@@ -180,7 +194,7 @@ public class TeamCreator {
   }
 
   private SupermanagerTeam generateTeam(String name) {
-    return SupermanagerTeam.createTeam()
+    return supermanagerTeam()
         .withName(name)
         .withMoney(6500000)
         .withGuards(getRandomGuards())
@@ -275,7 +289,7 @@ public class TeamCreator {
     return boughtCenters;
   }
 
-  private void initializeTeamIds() {
+  private void initializeTeamIds(boolean onlyAlert) {
     try {
       File input = new File("/Users/ruben.arana/git/SuperManagerBot/src/main/resources/teams.html");
       Document doc = Jsoup.parse(input, "UTF-8");
@@ -287,11 +301,12 @@ public class TeamCreator {
           String uri = teamNode.getElementsByTag("a").attr("href");
           String id = uri.substring(uri.lastIndexOf("/") + 1);
 
-          //if (teamNode.parent().getElementsByAttribute("src").size() > 0 ) {
-          teamIds.add(Long.parseLong(id));
-          //}
+          boolean alertTeam = isAlertedTeam(teamNode);
+
+          if (!onlyAlert || alertTeam) {
+            teamIds.add(Long.parseLong(id));
+          }
         } catch (Exception e) {
-          //
         }
       }
     } catch (IOException e) {
@@ -299,7 +314,11 @@ public class TeamCreator {
     }
   }
 
-  public SupermanagerTeam generateTeamWithChanges(SupermanagerTeam team) {
+  private boolean isAlertedTeam(final Element teamNode) {
+    return teamNode.parent().getElementsByAttribute("src").size() > 0;
+  }
+
+  private SupermanagerTeam generateTeamWithChanges(SupermanagerTeam team) {
 
     float actualExpectedEff = team.calculateActualExpectedEfficiency();
     System.out.println("--------------------------------");
@@ -318,7 +337,7 @@ public class TeamCreator {
       if (tempTeam.isValid()) {
         float eff = tempTeam.calculateActualExpectedEfficiency();
         if (eff > actualExpectedEff) {
-          bestCombination = SupermanagerTeam.createTeam(tempTeam).build();
+          bestCombination = supermanagerTeam(tempTeam).build();
           actualExpectedEff = eff;
         }
       }
@@ -326,6 +345,10 @@ public class TeamCreator {
 
     System.out.println("AFTER: " + actualExpectedEff);
 
+
+    List<Player> guards = new ArrayList<>();
+    List<Player> forwards = new ArrayList<>();
+    List<Player> centers = new ArrayList<>();
 
     return bestCombination;
   }
@@ -373,7 +396,7 @@ public class TeamCreator {
       }
     }
 
-    return SupermanagerTeam.createTeam()
+    return supermanagerTeam()
         .withId(teamWithRemovedPlayers.getId())
         .withMoney(teamWithRemovedPlayers.getMoney())
         .withGuards(guardsList)
@@ -395,7 +418,8 @@ public class TeamCreator {
       for (Player player : teamPlayers.subList(0, teamPlayers.size() - CHANGES_TO_BE_DONE - EXTRA_PLAYERS_MARGIN)) {
         playersToAdd.add(player);
       }
-      for (Player player : teamPlayers.subList(teamPlayers.size() - CHANGES_TO_BE_DONE - EXTRA_PLAYERS_MARGIN, teamPlayers.size())) {
+      for (Player player : teamPlayers.subList(teamPlayers.size() - CHANGES_TO_BE_DONE - EXTRA_PLAYERS_MARGIN,
+          teamPlayers.size())) {
         playersToRemove.add(player);
       }
 
@@ -432,7 +456,7 @@ public class TeamCreator {
       }
     }
 
-    return SupermanagerTeam.createTeam()
+    return supermanagerTeam()
         .withMoney(team.getMoney())
         .withId(team.getId())
         .withGuards(guardsList)
@@ -442,15 +466,15 @@ public class TeamCreator {
   }
 
 
-  public void updateTeams() {
-    initializeTeamIds();
+  public void updateTeams(boolean onlyAlert) {
+    initializeTeamIds(onlyAlert);
 
     int updatedTeams = 0;
-    boolean start = false;
+    boolean start = true;
     for (Long teamId : teamIds) {
       if (start) {
-        //supermanagerUIService.resetTeam(teamId);
-        //supermanagerUIService.removeAllSustituir(teamId);
+        supermanagerUIService.resetTeam(teamId);
+        supermanagerUIService.removeAllSustituir(teamId);
         long preTime = System.currentTimeMillis();
 
         SupermanagerTeam initialSupermanagerTeam = initializeTeam(teamId);
@@ -468,44 +492,42 @@ public class TeamCreator {
         }
       } else {
         updatedTeams++;
-        System.out.println("model.SupermanagerTeam " + updatedTeams);
+        System.out.println("Updated teams " + updatedTeams);
 
-        if (teamId == 1044779) {
+        if (teamId == 1273258) {
           start = true;
         }
       }
     }
   }
 
-  public SupermanagerTeam initializeTeam(Long teamId) {
+  private SupermanagerTeam initializeTeam(Long teamId) {
     try {
       if (supermanagerUIService.changesAlreadyDone(teamId)) {
         return null;
       }
       long totalMoney = supermanagerUIService.getTeamMoney(teamId);
 
-      List<Player> players = findPlayersByName(supermanagerUIService.getTeamPlayerNames(teamId));
+      List<Player> sortedPlayers = findPlayersByName(supermanagerUIService.getTeamPlayerNames(teamId));
 
-      return SupermanagerTeam.createTeam()
+      return supermanagerTeam()
           .withId(teamId)
           .withMoney(totalMoney)
-          .withGuards(players.stream().filter(player -> player.getPosition().equals(PositionEnum.GUARD)).collect(toList()))
-          .withForwards(players.stream().filter(player -> player.getPosition().equals(PositionEnum.FORWARD)).collect(toList()))
-          .withCenters(players.stream().filter(player -> player.getPosition().equals(PositionEnum.CENTER)).collect(toList()))
+          .withGuards(sortedPlayers.stream().limit(3).collect(toList()))
+          .withForwards(sortedPlayers.stream().skip(3).limit(4).collect(toList()))
+          .withCenters(sortedPlayers.stream().skip(7).collect(toList()))
           .build();
     } catch (Exception e) {
       return null;
     }
   }
 
-  public List<Player> findPlayersByName(List<String> playerNames) {
-    List<Player> players = new ArrayList<>();
-    for (Player player : playerList) {
-      if (playerNames.contains(player.getName())) {
-        players.add(player);
-      }
-    }
-    return players;
+  private List<Player> findPlayersByName(List<String> playerNames) {
+    Map<String, Player> playersMap = playerList.stream()
+        .filter(player -> playerNames.contains(player.getName()))
+        .collect(toMap(Player::getName, player -> player));
+
+    return playerNames.stream().map(playersMap::get).collect(toList());
   }
 
 }

@@ -10,7 +10,9 @@ public class Predictor {
   private InMemoryDB inMemoryDB;
 
   private float GLOBAL_EFF = 81.75f;
+
   private float GLOBAL_EFF_HOME = 87.93f;
+
   private float GLOBAL_EFF_AWAY = 75.57f;
 
 
@@ -85,6 +87,10 @@ public class Predictor {
     //TODO:Standard desviation to be applied later
     float predictedEFF = eff_factor * opp_team_factor * home_away_factor * (1 + (0.2f * win_percentage_factor));
 
+    if (predictedEFF == 0) {
+      predictedEFF = (float) player.getPrice() / (float) 70000;
+    }
+
     System.out.println("eff_factor: " + eff_factor);
     System.out.println("opp_team_factor: " + opp_team_factor);
     System.out.println("home_away_factor: " + home_away_factor);
@@ -117,19 +123,25 @@ public class Predictor {
         return globalPercentage;
       }
 
-      float playerTeamWinPercentatgeHome = (float) playerACBTeam.getHomeWins() / (float) playerACBTeam.getGamesPlayedHome();
-      float oppositeTeamWinPercentageAway = (float) oppositeACBTeam.getAwayWins() / (float) oppositeACBTeam.getGamesPlayedAway();
-      float localPercentatge = playerTeamWinPercentatgeHome / (playerTeamWinPercentatgeHome + oppositeTeamWinPercentageAway);
+      float playerTeamWinPercentatgeHome =
+          (float) playerACBTeam.getHomeWins() / (float) playerACBTeam.getGamesPlayedHome();
+      float oppositeTeamWinPercentageAway =
+          (float) oppositeACBTeam.getAwayWins() / (float) oppositeACBTeam.getGamesPlayedAway();
+      float localPercentatge =
+          playerTeamWinPercentatgeHome / (playerTeamWinPercentatgeHome + oppositeTeamWinPercentageAway);
       return (globalPercentage + localPercentatge) / 2;
     } else {
       if (playerACBTeam.getGamesPlayedAway() == 0 || oppositeACBTeam.getGamesPlayedHome() == 0
           || playerACBTeam.getAwayWins() == 0 && oppositeACBTeam.getHomeWins() == 0) {
         return globalPercentage;
       }
-      float playerTeamWinPercentatgeAway = (float) playerACBTeam.getAwayWins() / (float) playerACBTeam.getGamesPlayedAway();
-      float oppositeTeamWinPercentageHome = (float) oppositeACBTeam.getHomeWins() / (float) oppositeACBTeam.getGamesPlayedHome();
+      float playerTeamWinPercentatgeAway =
+          (float) playerACBTeam.getAwayWins() / (float) playerACBTeam.getGamesPlayedAway();
+      float oppositeTeamWinPercentageHome =
+          (float) oppositeACBTeam.getHomeWins() / (float) oppositeACBTeam.getGamesPlayedHome();
 
-      float localPercentatge = playerTeamWinPercentatgeAway / (playerTeamWinPercentatgeAway + oppositeTeamWinPercentageHome);
+      float localPercentatge =
+          playerTeamWinPercentatgeAway / (playerTeamWinPercentatgeAway + oppositeTeamWinPercentageHome);
       return (globalPercentage + localPercentatge) / 2;
     }
   }
@@ -161,19 +173,21 @@ public class Predictor {
       if (oppositeACBTeam.getGamesPlayedHome() == 0) {
         return receivedEff / GLOBAL_EFF;
       }
-      float homeReceivedEff = (float) oppositeACBTeam.getHomeEfficiencyReceived() / (float) oppositeACBTeam.getGamesPlayedHome();
+      float homeReceivedEff =
+          (float) oppositeACBTeam.getHomeEfficiencyReceived() / (float) oppositeACBTeam.getGamesPlayedHome();
       return ((receivedEff / GLOBAL_EFF) + (homeReceivedEff / GLOBAL_EFF_AWAY)) / 2;
     } else {
       if (oppositeACBTeam.getGamesPlayedAway() == 0) {
         return receivedEff / GLOBAL_EFF;
       }
-      float awayReceivedEff = (float) oppositeACBTeam.getAwayEfficiencyReceived() / (float) oppositeACBTeam.getGamesPlayedAway();
+      float awayReceivedEff =
+          (float) oppositeACBTeam.getAwayEfficiencyReceived() / (float) oppositeACBTeam.getGamesPlayedAway();
       return ((receivedEff / GLOBAL_EFF) + (awayReceivedEff / GLOBAL_EFF_HOME)) / 2;
     }
   }
 
   private float calculateEffFactor(Player player, boolean isAtHome) {
-    if (player.isInjured()){
+    if (player.isInjured()) {
       return -999;
     }
 
@@ -196,7 +210,7 @@ public class Predictor {
     }
     float effLast3 = player.getEfficiencyLast3Games() / 3;
     //TODO add HOME/AWAY efficiency if gamesPlayed >= 6 aprox
-    return (float)(multiplier * (0.7 * eff + 0.3 * effLast3));
+    return (float) (multiplier * (0.7 * eff + 0.3 * effLast3));
   }
 
 }
