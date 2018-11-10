@@ -5,6 +5,8 @@ import model.PlayerGame;
 import java.util.ArrayList;
 import java.util.List;
 
+import static model.Player.newPlayer;
+
 public class Predictor {
 
   private InMemoryDB inMemoryDB;
@@ -27,19 +29,17 @@ public class Predictor {
 
     initializeGlobals();
 
-    for (Player player : players) {
+    players.forEach(player -> {
       List<PlayerGame> games = inMemoryDB.getGamesForPlayer(player.getName());
       if (games.size() == 0) {
         System.out.println(player.getName() + " with NO GAMES ");
       }
       try {
-        Player completePlayer = Player.newPlayer(player).withPlayerGames(games).build();
-        playerPredictions.add(predict(completePlayer));
-
+        playerPredictions.add(predict(newPlayer(player).withPlayerGames(games).build()));
       } catch (Exception e) {
         e.printStackTrace();
       }
-    }
+    });
 
     return playerPredictions;
   }
@@ -100,7 +100,7 @@ public class Predictor {
 
     inMemoryDB.savePrediction(player.getName(), predictedEFF);
 
-    return Player.newPlayer(player).withPredictedEff(predictedEFF).build();
+    return newPlayer(player).withPredictedEff(predictedEFF).build();
   }
 
   private float calculateWinPercentage(ACBTeam playerACBTeam, ACBTeam oppositeACBTeam, boolean isAtHome) {

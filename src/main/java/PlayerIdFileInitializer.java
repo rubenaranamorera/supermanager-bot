@@ -64,7 +64,7 @@ public class PlayerIdFileInitializer {
     }
   }
 
-  public List<Player> obtainAllPlayersForNextGame() throws IOException {
+  List<Player> obtainAllPlayersForNextGame() throws IOException {
     List<Player> players = new ArrayList<>();
     Document document = Jsoup.parse(new File(URI + "market.html"), "UTF-8");
 
@@ -75,20 +75,6 @@ public class PlayerIdFileInitializer {
         players.add(obtainPlayer(tr));
       }
     }
-
-
-    /* Boungou-Colo, Nobel
-    Player p2 = Player.newPlayer()
-        .withId("2808")
-        .withInjured(true)
-        .withPrice(751188)
-        .withPosition(PositionEnum.FORWARD)
-        .withTeamName("REAL BETIS ENERGIA PLUS")
-        .withName("BOUNGOU-COLO, NOBEL")
-        .withNationality(PlayerNationalityEnum.EUROPEAN)
-        .build();
-
-    players.add(p2);*/
 
     return players;
   }

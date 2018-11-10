@@ -1,11 +1,11 @@
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public class TeamNameGenerator {
 
   private static final List<String> USERNAMES;
   private static final List<String> NICKNAMES;
-
 
   static {
     USERNAMES = Arrays.asList("ArMoZ", "ArMoZSlaYeR", "armoz", "armozslayer", "SCM", "Ruarmo", "Roser", "CBRoser", "CIC", "CBCIC",
@@ -25,11 +25,9 @@ public class TeamNameGenerator {
 
   }
 
-  public String generateName() {
-    return new StringBuilder()
-        .append(RandomPicker.pickOneString(USERNAMES))
-        .append(" ")
-        .append(RandomPicker.pickOneString(NICKNAMES))
-        .toString();
+  String generateName() {
+    return USERNAMES.get(new Random().nextInt(USERNAMES.size()))
+        + " "
+        + NICKNAMES.get(new Random().nextInt(NICKNAMES.size()));
   }
 }

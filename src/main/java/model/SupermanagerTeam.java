@@ -2,23 +2,29 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
+import static java.util.Objects.isNull;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
 
 public class SupermanagerTeam {
 
   private long id;
+
   private String name;
-  private List<Player> guards = new ArrayList<>();
-  private List<Player> forwards = new ArrayList<>();
-  private List<Player> centers = new ArrayList<>();
+
+  private Map<Integer, Player> playersPositions;
+
   private long money;
+
+  private Float expectedEfficiency = null;
 
   private SupermanagerTeam(Builder builder) {
     id = builder.id;
     name = builder.name;
-    guards = builder.guards;
-    forwards = builder.forwards;
-    centers = builder.centers;
     money = builder.money;
+    playersPositions = builder.playerPositions;
   }
 
   public long getId() {
@@ -30,19 +36,32 @@ public class SupermanagerTeam {
   }
 
   public List<Player> getGuards() {
-    return guards;
+    return playersPositions.keySet().stream().filter(key -> key < 4).map(playersPositions::get).collect(toList());
   }
 
   public List<Player> getForwards() {
-    return forwards;
+    return playersPositions.keySet().stream().filter(key -> key >= 4 && key <= 7).map(playersPositions::get).collect(toList());
   }
 
   public List<Player> getCenters() {
-    return centers;
+    return playersPositions.keySet().stream().filter(key -> key > 7).map(playersPositions::get).collect(toList());
+  }
+
+
+  public Map<Integer, Player> getPlayersPositions() {
+    return playersPositions;
   }
 
   public long getMoney() {
     return money;
+  }
+
+  public String getKey() {
+    return playersPositions.values()
+        .stream()
+        .map(player -> player.getId())
+        .sorted()
+        .collect(joining("#"));
   }
 
   public static Builder supermanagerTeam() {
@@ -53,59 +72,37 @@ public class SupermanagerTeam {
     Builder builder = new Builder();
     builder.id = copy.id;
     builder.name = copy.name;
-    builder.guards = copy.guards;
-    builder.forwards = copy.forwards;
-    builder.centers = copy.centers;
+    builder.playerPositions = copy.playersPositions;
     builder.money = copy.money;
     return builder;
   }
 
 
-  public long getTotalPrice () {
-    long totalPrice = 0;
-    List<Player> players = new ArrayList<>();
-    players.addAll(guards);
-    players.addAll(forwards);
-    players.addAll(centers);
-    for (Player player: players) {
-      totalPrice = totalPrice + player.getPrice();
-    }
-    return totalPrice;
+  private long getTotalPrice() {
+    return playersPositions.values()
+        .stream()
+        .map(Player::getPrice)
+        .mapToLong(i -> i)
+        .sum();
   }
 
   public boolean isValid() {
     long difference = money - getTotalPrice();
     return difference > 0
         //&& difference < 500000
-        && guards.size() == 3
-        && forwards.size() == 4
-        && centers.size() == 4
+        && getGuards().size() == 3
+        && getForwards().size() == 4
+        && getCenters().size() == 4
         && getPlayersFrom(PlayerNationalityEnum.SPANISH) >= 4
         && getPlayersFrom(PlayerNationalityEnum.AMERICAN) <= 2;
   }
 
-  private int getPlayersFrom(PlayerNationalityEnum nationality) {
-    int fromNationality = 0;
-
-    for (Player guard: guards) {
-      if (guard.getNationality() == nationality) {
-        fromNationality++;
-      }
-    }
-
-    for (Player forward: forwards) {
-      if (forward.getNationality() == nationality) {
-        fromNationality++;
-      }
-    }
-
-    for (Player center: centers) {
-      if (center.getNationality() == nationality) {
-        fromNationality++;
-      }
-    }
-
-    return fromNationality;
+  private long getPlayersFrom(PlayerNationalityEnum nationality) {
+    return playersPositions
+        .values()
+        .stream()
+        .filter(player -> player.getNationality().equals(nationality))
+        .count();
   }
 
   @Override
@@ -113,55 +110,36 @@ public class SupermanagerTeam {
     return "SupermanagerTeam{" +
         "id=" + id +
         ", name='" + name + '\'' +
-        ", guards=" + guards +
-        ", forwards=" + forwards +
-        ", centers=" + centers +
+        ", players=" + playersPositions.values().stream().map(Player::getName).collect(joining(" -- ")) +
         ", money=" + money +
         ", totalPrice=" + getTotalPrice() +
         '}';
   }
 
 
-  public float calculateActualExpectedEfficiency() {
-
-    float expectedEff = 0;
-
-    for (Player guard: guards) {
-      expectedEff = expectedEff + guard.getPredictedEff();
+  public float getExpectedEfficiency() {
+    if (isNull(expectedEfficiency)) {
+      expectedEfficiency = playersPositions
+          .values()
+          .stream()
+          .map(Player::getPredictedEff)
+          .reduce(0.0f, Float::sum);
     }
-
-    for (Player forward: forwards) {
-      expectedEff = expectedEff + forward.getPredictedEff();
-    }
-
-    for (Player center: centers) {
-      expectedEff = expectedEff + center.getPredictedEff();
-    }
-
-    return expectedEff;
+    return expectedEfficiency;
   }
 
   public List<Player> getAllTeamPlayers() {
-    List<Player> playerList = new ArrayList<>();
-    for (Player guard: guards) {
-      playerList.add(guard);
-    }
-    for (Player forward: forwards) {
-      playerList.add(forward);
-    }
-    for (Player center: centers) {
-      playerList.add(center);
-    }
-    return playerList;
+    return new ArrayList<>(playersPositions.values());
   }
 
   public static final class Builder {
 
     private long id;
+
     private String name;
-    private List<Player> guards;
-    private List<Player> forwards;
-    private List<Player> centers;
+
+    private Map<Integer, Player> playerPositions;
+
     private long money;
 
     private Builder() {
@@ -177,18 +155,8 @@ public class SupermanagerTeam {
       return this;
     }
 
-    public Builder withGuards(List<Player> val) {
-      guards = val;
-      return this;
-    }
-
-    public Builder withForwards(List<Player> val) {
-      forwards = val;
-      return this;
-    }
-
-    public Builder withCenters(List<Player> val) {
-      centers = val;
+    public Builder withPlayerPositions(Map<Integer, Player> val) {
+      playerPositions = val;
       return this;
     }
 
