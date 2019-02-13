@@ -119,11 +119,16 @@ public class SupermanagerTeam {
 
   public float getExpectedEfficiency() {
     if (isNull(expectedEfficiency)) {
-      expectedEfficiency = playersPositions
-          .values()
-          .stream()
-          .map(Player::getPredictedEff)
-          .reduce(0.0f, Float::sum);
+
+      try {
+        expectedEfficiency = playersPositions
+            .values()
+            .stream()
+            .map(Player::getPredictedEff)
+            .reduce(0.0f, Float::sum);
+      } catch (Exception e) {
+        return 0;
+      }
     }
     return expectedEfficiency;
   }

@@ -10,15 +10,20 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static com.google.common.collect.Streams.concat;
 import static java.lang.Math.random;
+import static java.util.Collections.reverseOrder;
 import static java.util.Collections.shuffle;
 import static java.util.Collections.sort;
+import static java.util.Map.Entry.comparingByValue;
+import static java.util.Objects.isNull;
 import static java.util.Optional.empty;
 import static java.util.Optional.of;
 import static java.util.stream.Collectors.toList;
@@ -33,7 +38,7 @@ import static model.SupermanagerTeam.supermanagerTeam;
 
 public class TeamCreator {
 
-  private static final int MIN_EFFICIENCY = 10;
+  private static final float MIN_EFFICIENCY = 10;
 
   private static final int BEST_GUARDS_NUMBER = 10;
 
@@ -43,11 +48,9 @@ public class TeamCreator {
 
   private static final int EXTRA_PLAYERS_TO_BE_REMOVED = 1;
 
-  private static final int ALWAYS_IN_EFF_THRESHOLD = 15;
+  private static final int ALWAYS_IN_EFF_THRESHOLD = 14;
 
-  private static final Map<String, Integer> CREATED_TEAMS = new HashMap<>();
-
-  private static final Integer MAXIMUM_TEAM_REPETITIONS = 1;
+  private static final Set<String> CREATED_TEAMS = new HashSet<>();
 
   private static final long MINIMUM_SPANISH_PLAYERS = 2;
 
@@ -67,6 +70,10 @@ public class TeamCreator {
   private List<Player> bestForwards = new ArrayList<>();
 
   private List<Player> bestCenters = new ArrayList<>();
+
+  private HashMap<String, Integer> PRE_COUNT_MAP = new HashMap<>();
+
+  private HashMap<String, Integer> POST_COUNT_MAP = new HashMap<>();
 
   private int TEAMS_TO_BE_CREATED = 1000;
 
@@ -90,7 +97,7 @@ public class TeamCreator {
   private Map<String, Player> playerMap = new HashMap<>();
 
 
-  public static final float SOME = 1.2f;
+  public static final float SOME = 1.15f;
 
   public static final float LESS = 0.85f;
 
@@ -101,22 +108,15 @@ public class TeamCreator {
 
   static {
 
-    PLAYERS_TO_BUY.put("ENNIS, DYLAN", SOME);
-    PLAYERS_TO_BUY.put("BEIRAN, JAVIER", SOME);
-    PLAYERS_TO_BUY.put("BRIZUELA, DARIO", SOME);
     PLAYERS_TO_BUY.put("LAPROVITTOLA, NICO", SOME);
-    PLAYERS_TO_BUY.put("THOMPSON, DEON", SOME);
+    PLAYERS_TO_BUY.put("CAMPAZZO, FACUNDO", 1.5f);
+    PLAYERS_TO_BUY.put("HEURTEL, THOMAS", LESS);
+    PLAYERS_TO_BUY.put("ERIKSSON, MARCUS", SOME);
 
-    PLAYERS_TO_BUY.put("ORIOLA, PIERRE", LESS);
-    PLAYERS_TO_BUY.put("POIRIER, VINCENT", LESS);
-    PLAYERS_TO_BUY.put("SALVO, MIQUEL", LESS);
-    PLAYERS_TO_BUY.put("TAVARES, EDY", LESS);
-    PLAYERS_TO_BUY.put("HUERTAS, MARCELINHO", LESS);
-    PLAYERS_TO_BUY.put("TOMIC, ANTE", LESS);
+    PLAYERS_TO_BUY.put("THOMPKINS, TREY", FEW);
+    PLAYERS_TO_BUY.put("SUTTON, DOMINIQUE", FEW);
 
-    PLAYERS_TO_BUY.put("CARROLL, JAYCEE", FEW);
-    PLAYERS_TO_BUY.put("GRANGER, JAYSON", NEVER);
-    PLAYERS_TO_BUY.put("KUZMIC, OGNJEN", NEVER);
+    PLAYERS_TO_BUY.put("LLULL, SERGIO", NEVER);
 
   }
 
@@ -132,6 +132,8 @@ public class TeamCreator {
         ).forEach(player -> playerList.add(player));
 
     playerMap = playerList.stream()
+        .filter(player -> !isNull(player.getName()) && !player.getName().isEmpty() && !isNull(player.getPosition()))
+        .distinct()
         .collect(toMap(Player::getName, player -> player));
 
     sort(playerList);
@@ -264,16 +266,11 @@ public class TeamCreator {
   }
 
   private void addToCreatedTeams(final String key) {
-    if (CREATED_TEAMS.containsKey(key)) {
-      int times = CREATED_TEAMS.get(key);
-      CREATED_TEAMS.put(key, times + 1);
-    } else {
-      CREATED_TEAMS.put(key, 1);
-    }
+    CREATED_TEAMS.add(key);
   }
 
   private boolean isAlreadyCreated(final String key) {
-    return CREATED_TEAMS.containsKey(key) && CREATED_TEAMS.get(key) > MAXIMUM_TEAM_REPETITIONS;
+    return CREATED_TEAMS.contains(key);
   }
 
   private SupermanagerTeam fillTeam(SupermanagerTeam teamWithRemovedPlayers, float variablePercentage) {
@@ -312,7 +309,8 @@ public class TeamCreator {
         .filter(player -> !players.contains(player))
         .findFirst()
         .map(player -> newPlayer(player)
-            .withPredictedEff(player.getPredictedEff() * ((1 - variablePercentage) + ((float) random() * 2 * variablePercentage)))
+            //.withPredictedEff(player.getPredictedEff() * ((1 - variablePercentage) + ((float) random() * 2 * variablePercentage)))
+            .withPredictedEff(player.getPredictedEff() * 0.001f * (1000 - POST_COUNT_MAP.getOrDefault(player.getName(), 0)))
             .build())
         .orElseThrow(() -> new RuntimeException("Missing best players!"));
 
@@ -368,15 +366,18 @@ public class TeamCreator {
         long preTime = System.currentTimeMillis();
 
         Optional<SupermanagerTeam> initialTeam = initializeTeam(teamId);
+
         final int finalUpdatedTeams = updatedTeams;
-        Optional<SupermanagerTeam> newTeam = initialTeam.map(initTeam -> generateTeamWithChanges(initTeam,
-            (float) finalUpdatedTeams / teamIds.size()))
+        Optional<SupermanagerTeam> newTeam = initialTeam
+            .map(initTeam -> generateTeamWithChanges(initTeam, (float) finalUpdatedTeams / teamIds.size()))
             .map(Optional::get);
 
         if (!newTeam.isPresent()) {
           System.out.println("Unable to change team: " + initialTeam.get().getId());
         } else {
           supermanagerUIService.updateTeam(initialTeam.get(), newTeam.get());
+          updatePlayersChosenPre(initialTeam.get());
+          updatePlayersChosenPost(newTeam.get());
           updatedTeams++;
           printTimeTaken(updatedTeams, preTime, initialTeam.get());
         }
@@ -384,10 +385,67 @@ public class TeamCreator {
       } else {
         updatedTeams++;
         System.out.println("Updated teams " + updatedTeams);
-        if (teamId == 1272170) {
+        if (teamId == 1276337) {
           startFromBegining = true;
         }
       }
+
+
+      if (updatedTeams % 100 == 0) {
+        System.out.println("---------------------------------------------------------------------");
+        System.out.println("MAP AT " + updatedTeams + " TEAMS");
+        printPlayersPresenceMap();
+      }
+    }
+
+    printPlayersPresenceMap();
+  }
+
+  private void printPlayersPresenceMap() {
+    System.out.println("--------------------------- PREVIOUS PLAYERS ------------------------------");
+
+    PRE_COUNT_MAP.entrySet()
+        .stream()
+        .sorted(reverseOrder(comparingByValue()))
+        .forEach(entry -> System.out.println(entry.getKey() + ": " + entry.getValue()));
+
+    System.out.println("--------------------------- POST PLAYERS ------------------------------");
+
+    POST_COUNT_MAP.entrySet()
+        .stream()
+        .sorted(reverseOrder(comparingByValue()))
+        .forEach(entry -> System.out.println(entry.getKey() + ": " + entry.getValue()));
+  }
+
+  private void updatePlayersChosenPre(final SupermanagerTeam team) {
+
+    team.getAllTeamPlayers()
+        .stream()
+        .map(Player::getName)
+        .forEach(this::addPlayerToPreCountMap);
+  }
+
+  private void updatePlayersChosenPost(final SupermanagerTeam team) {
+
+    team.getAllTeamPlayers()
+        .stream()
+        .map(Player::getName)
+        .forEach(this::addPlayerToPostCountMap);
+  }
+
+  private void addPlayerToPreCountMap(final String playerName) {
+    if (PRE_COUNT_MAP.containsKey(playerName)) {
+      PRE_COUNT_MAP.put(playerName, PRE_COUNT_MAP.get(playerName) + 1);
+    } else {
+      PRE_COUNT_MAP.put(playerName, 1);
+    }
+  }
+
+  private void addPlayerToPostCountMap(final String playerName) {
+    if (POST_COUNT_MAP.containsKey(playerName)) {
+      POST_COUNT_MAP.put(playerName, POST_COUNT_MAP.get(playerName) + 1);
+    } else {
+      POST_COUNT_MAP.put(playerName, 1);
     }
   }
 
@@ -399,6 +457,7 @@ public class TeamCreator {
   }
 
   private Optional<SupermanagerTeam> initializeTeam(Long teamId) {
+
     return supermanagerUIService.changesAlreadyDone(teamId)
         ? empty()
         : of(
