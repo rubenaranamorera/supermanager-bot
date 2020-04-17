@@ -18,10 +18,10 @@ import static java.util.stream.Collectors.toList;
 
 public class TeamCreator {
 
-  private static final int MIN_EFFICIENCY = 12;
-  private static final int BEST_GUARDS_NUMBER = 7;
-  private static final int BEST_FORWARDS_NUMBER = 8;
-  private static final int BEST_CENTERS_NUMBER = 8;
+  private static final int MIN_EFFICIENCY = 10;
+  private static final int BEST_GUARDS_NUMBER = 9;
+  private static final int BEST_FORWARDS_NUMBER = 10;
+  private static final int BEST_CENTERS_NUMBER = 10;
   private static final int EXTRA_PLAYERS_MARGIN = 0;
   private static final int ALWAYS_IN_EFF_THRESHOLD = 15;
 
@@ -61,21 +61,11 @@ public class TeamCreator {
 
   static {
 
-    PLAYERS_TO_BUY.put("SAN EMETERIO, FERNANDO", SOME);
-    PLAYERS_TO_BUY.put("VIDAL, SERGI", SOME);
+    PLAYERS_TO_BUY.put("LAPROVITTOLA, NICO", SOME);
+    PLAYERS_TO_BUY.put("VILDOZA, LUCA", SOME);
+    PLAYERS_TO_BUY.put("BEIRAN, JAVIER", FEW);
 
-
-    /*PLAYERS_TO_BUY.put("CAMPAZZO, FACUNDO", 1.6f);
-    PLAYERS_TO_BUY.put("GRANGER, JAYSON", OFTEN);
-    PLAYERS_TO_BUY.put("SOKO, OVIE", OFTEN);
-    PLAYERS_TO_BUY.put("TAVARES, WALTER", OFTEN);
-    PLAYERS_TO_BUY.put("LANDESBERG, SYLVEN", OFTEN);
-    PLAYERS_TO_BUY.put("SCHILB, BLAKE", OFTEN);
-
-
-    PLAYERS_TO_BUY.put("NEAL, GARY", SOME);
-    PLAYERS_TO_BUY.put("NOREL, HENK", SOME);
-    PLAYERS_TO_BUY.put("VAN LACKE, FEDE", SOME);*/
+  /*PLAYERS_TO_BUY.put("VAN LACKE, FEDE", SOME);*/
 
   }
 
